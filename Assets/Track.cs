@@ -6,6 +6,10 @@ public class Track : MonoBehaviour {
 
 	GameObject obj;
 	public AudioSource audio;
+
+	public float speed = 300f;
+	public float turnSpeed = 5f;
+
 	// Use this for initialization
 	void Start () {
 		//audio = GetComponent<AudioSource> ();
@@ -25,21 +29,17 @@ public class Track : MonoBehaviour {
 
 		float angle = Vector3.Angle (transform.forward, obj.transform.position - transform.position);
 		if (Mathf.Abs (angle) > 45) {
-			//print ("nope");
 		} else {
 			Debug.DrawLine (transform.position, obj.transform.position, Color.red);
-			//print ("yay");
-
 			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (obj.transform.position -
-			transform.position), 5f * Time.deltaTime);
+				transform.position), turnSpeed * Time.deltaTime);
 		}
 
-		transform.position += transform.forward * 150f * Time.deltaTime;
+		transform.position += transform.forward * speed * Time.deltaTime;
 	}
 
 
 	void OnCollisionEnter(Collision col){
-		print ("yay");
 		audio.Play ();
 		Destroy ((GameObject)transform.root.gameObject,1f);
 	}
