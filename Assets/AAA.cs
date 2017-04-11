@@ -7,8 +7,10 @@ public class AAA : MonoBehaviour {
 	public float delay = 0f;
 	GameObject player;
 	public GameObject rocketPrefab;
-	// Use this for initialization
-	void Start () {
+    public GameObject imageDang;
+    GameObject Danger;
+    // Use this for initialization
+    void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 	
@@ -21,7 +23,10 @@ public class AAA : MonoBehaviour {
 			Vector3 _direction = (player.transform.position - transform.position).normalized;
 			Quaternion _lookRotation = Quaternion.LookRotation(_direction);
 
-			Instantiate (rocketPrefab,transform.position + transform.forward*5f, _lookRotation);
+            Danger = Instantiate(imageDang, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            Danger.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+
+            Instantiate (rocketPrefab,transform.position + transform.forward*5f, _lookRotation);
 			delay = 200f;
 		}
 		if (delay != 0)
