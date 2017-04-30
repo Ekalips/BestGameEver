@@ -1,17 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class DangerScript : MonoBehaviour {
 
     // Use this for initialization
-    GameObject Danger;
+    public GameObject Danger;
     Vector3 temp; int counterUpdate; bool state;
+    RawImage ing;
+    public Texture dangerIcon1;
+    public Texture dangerIcon2;
+    int sizeOfIcon = 15;
     void Start()
     {
-        Danger = GameObject.FindWithTag("Dang");
+        Danger = Instantiate(Danger, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        Danger.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
         counterUpdate = 0;
         state = false;
+        ing = (RawImage)Danger.GetComponent<RawImage>();
     }
 
     // Update is called once per frame
@@ -30,7 +37,7 @@ public class DangerScript : MonoBehaviour {
                     }
                     else if (Camera.main.WorldToScreenPoint(transform.position).x > Camera.main.pixelWidth && Camera.main.WorldToScreenPoint(transform.position).y < Camera.main.pixelHeight)
                     {
-                        Danger.transform.position = new Vector3(Camera.main.pixelWidth - 50, Camera.main.WorldToScreenPoint(transform.position).y, 0);
+                        Danger.transform.position = new Vector3(Camera.main.pixelWidth - sizeOfIcon, Camera.main.WorldToScreenPoint(transform.position).y, 0);
                     }
                     else if (Camera.main.WorldToScreenPoint(transform.position).x < Camera.main.pixelWidth && Camera.main.WorldToScreenPoint(transform.position).y > Camera.main.pixelHeight)
                     {
@@ -38,34 +45,34 @@ public class DangerScript : MonoBehaviour {
                     }
                     else
                     {
-                        Danger.transform.position = new Vector3(Camera.main.pixelWidth - 50, Camera.main.pixelHeight, 0);
+                        Danger.transform.position = new Vector3(Camera.main.pixelWidth - sizeOfIcon, Camera.main.pixelHeight, 0);
                     }
                 }
                 else if (Camera.main.WorldToScreenPoint(transform.position).x > 0 && Camera.main.WorldToScreenPoint(transform.position).y < 0)
                 {
                     if (Camera.main.WorldToScreenPoint(transform.position).x < Camera.main.pixelWidth)
                     {
-                        Danger.transform.position = new Vector3(Camera.main.WorldToScreenPoint(transform.position).x, 50, 0);
+                        Danger.transform.position = new Vector3(Camera.main.WorldToScreenPoint(transform.position).x, sizeOfIcon, 0);
                     }
                     else
                     {
-                        Danger.transform.position = new Vector3(Camera.main.pixelWidth - 50, 50, 0);
+                        Danger.transform.position = new Vector3(Camera.main.pixelWidth - sizeOfIcon, sizeOfIcon, 0);
                     }
                 }
                 else if (Camera.main.WorldToScreenPoint(transform.position).x < 0 && Camera.main.WorldToScreenPoint(transform.position).y > 0)
                 {
                     if (Camera.main.WorldToScreenPoint(transform.position).y < Camera.main.pixelHeight)
                     {
-                        Danger.transform.position = new Vector3(50, Camera.main.WorldToScreenPoint(transform.position).y, 0);
+                        Danger.transform.position = new Vector3(sizeOfIcon, Camera.main.WorldToScreenPoint(transform.position).y, 0);
                     }
                     else
                     {
-                        Danger.transform.position = new Vector3(50, Camera.main.pixelHeight, 0);
+                        Danger.transform.position = new Vector3(sizeOfIcon, Camera.main.pixelHeight, 0);
                     }
                 }
                 else
                 {
-                    Danger.transform.position = new Vector3(50, 50, 0);
+                    Danger.transform.position = new Vector3(sizeOfIcon, sizeOfIcon, 0);
                 }
             }
             else
@@ -74,30 +81,30 @@ public class DangerScript : MonoBehaviour {
                 {
                     if (Camera.main.WorldToScreenPoint(transform.position).x < Camera.main.pixelWidth)
                     {
-                        Danger.transform.position = new Vector3(Camera.main.pixelWidth - Camera.main.WorldToScreenPoint(transform.position).x, 50, 0);
+                        Danger.transform.position = new Vector3(Camera.main.pixelWidth - Camera.main.WorldToScreenPoint(transform.position).x, sizeOfIcon, 0);
                     }
                     else
                     {
-                        Danger.transform.position = new Vector3(50, 50, 0);
+                        Danger.transform.position = new Vector3(sizeOfIcon, sizeOfIcon, 0);
                     }
                 }
             }
 
-            if (counterUpdate % 15 == 0)
+            if (counterUpdate % 9 == 0)
             {
                 if (state)
                 {
-                    temp.x = 1f;
-                    temp.y = 1f;
+                    ing.texture = dangerIcon2;
                     Danger.transform.localScale = temp;
                     state = false;
+                    ing.rectTransform.sizeDelta = new Vector2(30,30);
                 }
                 else
                 {
-                    temp.x = 0.5f;
-                    temp.y = 0.5f;
+                    ing.texture = dangerIcon1;
                     Danger.transform.localScale = temp;
                     state = true;
+                    ing.rectTransform.sizeDelta = new Vector2(30, 30);
                 }
             }
             counterUpdate++;
