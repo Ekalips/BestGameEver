@@ -13,7 +13,10 @@ public class Track : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//audio = GetComponent<AudioSource> ();
-		obj = GameObject.FindGameObjectWithTag ("Player");
+		obj = GameObject.FindGameObjectWithTag ("TrackObject");
+
+		speed = PlayerPrefs.GetFloat (PrefsController.KEY_SPEED, 300f);
+		turnSpeed = PlayerPrefs.GetFloat (PrefsController.KEY_TURN, 5f);
 	}
 	
 	// Update is called once per frame
@@ -40,7 +43,10 @@ public class Track : MonoBehaviour {
 
 
 	void OnCollisionEnter(Collision col){
-		audio.Play ();
-		Destroy ((GameObject)transform.root.gameObject,1f);
+		//audio.Play ();
+		if (col.transform.tag == "Player") {
+			col.transform.GetComponent<RunRestroyScript> ().startExplosion ();
+			Destroy ((GameObject)transform.root.gameObject, 0f);
+		}
 	}
 }
