@@ -24,21 +24,21 @@ public class PrefsController : MonoBehaviour {
 	public void writeEasyPrefs(){
 		PlayerPrefs.SetFloat (KEY_SPEED, 250);
 		PlayerPrefs.SetFloat (KEY_TURN, 3);
-		PlayerPrefs.SetFloat (KEY_HARDINA, 10);
+		PlayerPrefs.SetFloat (KEY_HARDINA, 1f);
 		PlayerPrefs.Save();
 	}
 
 	public void writeNormalPrefs(){
 		PlayerPrefs.SetFloat (KEY_SPEED, 300);
 		PlayerPrefs.SetFloat (KEY_TURN, 5);
-		PlayerPrefs.SetFloat (KEY_HARDINA, 15);
+		PlayerPrefs.SetFloat (KEY_HARDINA, 1.2f);
 		PlayerPrefs.Save();
 	}
 
 	public void writeHardPrefs(){
 		PlayerPrefs.SetFloat (KEY_SPEED, 350);
 		PlayerPrefs.SetFloat (KEY_TURN, 10);
-		PlayerPrefs.SetFloat (KEY_HARDINA, 20);
+		PlayerPrefs.SetFloat (KEY_HARDINA, 1.5f);
 		PlayerPrefs.Save();
 	}
 

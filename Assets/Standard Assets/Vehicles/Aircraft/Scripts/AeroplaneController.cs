@@ -260,6 +260,11 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
             m_Immobilized = true;
         }
 
+		public bool IsImmobilized()
+		{
+			return m_Immobilized;
+		}
+
 
         // Reset is called via the ObjectResetter script, if present.
         public void Reset()

@@ -7,8 +7,14 @@ public class Track : MonoBehaviour {
 	GameObject obj;
 	public AudioSource audio;
 
+	public ParticleSystem explosion;
+
 	public float speed = 300f;
 	public float turnSpeed = 5f;
+
+	public float lifeTime;
+
+	bool isReported = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +23,9 @@ public class Track : MonoBehaviour {
 
 		speed = PlayerPrefs.GetFloat (PrefsController.KEY_SPEED, 300f);
 		turnSpeed = PlayerPrefs.GetFloat (PrefsController.KEY_TURN, 5f);
+		lifeTime = 1000f;
+
+		ScoreControllerScript.onRocketCreated ();
 	}
 	
 	// Update is called once per frame
@@ -38,7 +47,19 @@ public class Track : MonoBehaviour {
 				transform.position), turnSpeed * Time.deltaTime);
 		}
 
-		transform.position += transform.forward * speed * Time.deltaTime;
+		//Debug.Log (lifeTime);
+		if (lifeTime <= 0) {
+			if (!explosion.isPlaying) {
+				explosion.Play ();
+			}
+			Destroy ((GameObject)transform.root.gameObject, 1f);
+			reportRocketDestroyed ();
+		} else {
+			transform.position += transform.forward * speed * Time.deltaTime;
+		}
+
+		lifeTime-=Time.deltaTime*100;
+
 	}
 
 
@@ -47,6 +68,14 @@ public class Track : MonoBehaviour {
 		if (col.transform.tag == "Player") {
 			col.transform.GetComponent<RunRestroyScript> ().startExplosion ();
 			Destroy ((GameObject)transform.root.gameObject, 0f);
+			reportRocketDestroyed ();
+		}
+	}
+
+	private void reportRocketDestroyed(){
+		if (!isReported) {
+			ScoreControllerScript.onRockedDestroyed ();
+			isReported = true;
 		}
 	}
 }

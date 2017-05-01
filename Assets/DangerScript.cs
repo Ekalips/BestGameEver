@@ -109,10 +109,13 @@ public class DangerScript : MonoBehaviour {
             }
             counterUpdate++;
         }
+
+
     }
-    void OnCollisionEnter(Collision col)
-    {
-        Destroy((GameObject)Danger);
-    }
+
+
+	void OnDestroy(){
+		Destroy ((GameObject)Danger);
+	}
 }
 

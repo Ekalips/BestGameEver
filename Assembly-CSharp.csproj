@@ -52,6 +52,7 @@
      <Compile Include="Assets\Code\MenuScript.cs" />
      <Compile Include="Assets\CreateRocket.cs" />
      <Compile Include="Assets\DangerScript.cs" />
+     <Compile Include="Assets\DestroyPlaneScript.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\GunAim.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\GunShoot.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Lel.cs" />
      <Compile Include="Assets\MenusController.cs" />
      <Compile Include="Assets\MoveCameraScript.cs" />
+     <Compile Include="Assets\MoveRelativeToPlane.cs" />
      <Compile Include="Assets\OnButtonClick.cs" />
      <Compile Include="Assets\PrefsController.cs" />
      <Compile Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\Antialiasing.cs" />
@@ -102,6 +104,7 @@
      <Compile Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
      <Compile Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\Vortex.cs" />
      <Compile Include="Assets\RunRestroyScript.cs" />
+     <Compile Include="Assets\ScoreControllerScript.cs" />
      <Compile Include="Assets\Track.cs" />
      <None Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

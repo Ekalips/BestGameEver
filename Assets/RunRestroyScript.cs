@@ -45,4 +45,14 @@ public class RunRestroyScript : MonoBehaviour {
 		isRun =true;
 		GetComponent<UnityStandardAssets.Vehicles.Aeroplane.AeroplaneController> ().Immobilize ();
 	}
+
+	void OnCollisionEnter(Collision col){
+		//audio.Play ();
+		if (col.transform.tag == "Terrain") {
+			permamentSystem1.Play ();
+			isRun = true;
+			lifetime = 4f;
+			GetComponent<UnityStandardAssets.Vehicles.Aeroplane.AeroplaneController> ().Immobilize ();
+		}
+	}
 }

@@ -1,10 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\RunRestroyScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DangerScript.cs">
     <Files>
-      <File FileName="Assets\Track.cs" Line="48" Column="53" />
-      <File FileName="Assets\RunRestroyScript.cs" Line="43" Column="2" />
-      <File FileName="Assets\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneController.cs" Line="258" Column="31" />
+      <File FileName="Assets\Track.cs" Line="70" Column="4" />
+      <File FileName="Assets\AAA.cs" Line="43" Column="45" />
+      <File FileName="Assets\DangerScript.cs" Line="120" Column="2" />
+      <File FileName="Assets\DestroyPlaneScript.cs" Line="15" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
