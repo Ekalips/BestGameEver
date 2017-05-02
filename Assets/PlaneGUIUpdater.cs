@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlaneGUIUpdater : MonoBehaviour {
 
 	ScrollRect horizontScroll;
+	ScrollRect horizontScroll2;
 	RectTransform verticalPannel;
 
 	GameObject inGamePannel;
@@ -16,6 +17,7 @@ public class PlaneGUIUpdater : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		horizontScroll = GameObject.Find ("PlaneHorizontScroll").GetComponent<ScrollRect>();
+		horizontScroll2 = GameObject.Find ("PlaneHorizontScroll2").GetComponent<ScrollRect>();
 		verticalPannel = GameObject.Find ("VerticalPannel").GetComponent<RectTransform> ();
 		inGamePannel = GameObject.Find ("InGamePannel");
 		gameOverPannel = GameObject.Find ("GameOverPannel");
@@ -35,6 +37,7 @@ public class PlaneGUIUpdater : MonoBehaviour {
 			 vangle = -transform.localRotation.z * 180;
 		}
 		horizontScroll.verticalNormalizedPosition = 1-hangle;
+		horizontScroll2.verticalNormalizedPosition = 1-hangle;
 		verticalPannel.localRotation = Quaternion.Euler (0.0f, 0.0f, vangle);
 	}
 
