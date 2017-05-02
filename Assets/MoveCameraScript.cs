@@ -45,9 +45,11 @@ public class MoveCameraScript : MonoBehaviour {
 					camera.transform.position == Vector3.zero) {
 					isMovementFinished = true;
 					this.currentPos = newPos;
+					Debug.Log ("finished");
 				}
 			
 			} else {
+				Debug.Log ("finished");
 				isMovementFinished = true;
 				this.currentPos = newPos;
 			}
@@ -58,6 +60,7 @@ public class MoveCameraScript : MonoBehaviour {
 
 	public void changePosition(int newPos){
 		Debug.Log ("changePosition: " + newPos);
+		this.currentPos = -1;
 		this.newPos = newPos;
 		this.isMovementFinished = false;
 	}

@@ -12,6 +12,6 @@ public class MoveRelativeToPlane : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = playerPlane.transform.position + Vector3.up * 150;
+		transform.position = playerPlane.transform.position + Vector3.up * 300;
 	}
 }

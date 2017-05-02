@@ -15,7 +15,7 @@ public class Track : MonoBehaviour {
 	public float lifeTime;
 
 	bool isReported = false;
-
+	bool isFlared = false;
 	// Use this for initialization
 	void Start () {
 		//audio = GetComponent<AudioSource> ();
@@ -39,6 +39,40 @@ public class Track : MonoBehaviour {
 
 		Debug.DrawRay (transform.position, transform.forward * 300f);
 
+		if (!isFlared) {
+			GameObject[] flares = GameObject.FindGameObjectsWithTag ("Flares");
+			if (flares != null && flares.Length > 0) {
+				float minDistance = float.MaxValue;
+				int minIndex = -1;
+				for (int i = 0; i < flares.Length; i++) {
+					float d = Vector3.Distance (transform.position, flares [i].transform.position);
+					if (d < minDistance) {
+						minDistance = d;
+						minIndex = i;
+					}
+				}
+
+
+				float distanceToPlayer = Vector3.Distance (transform.position, obj.transform.position);
+				if (distanceToPlayer > minDistance && minIndex != -1) {
+					obj = flares [minIndex];
+					isFlared = true;
+					Debug.Log ("I'M FLARED!!");
+				}
+			}
+		} 
+
+		if (obj == null || obj.transform == null) {
+			destroyself ();
+			return;
+		}
+
+		if (isFlared && Vector3.Distance (obj.transform.position, transform.position) < 100f) {
+			destroyself ();
+		}
+
+
+
 		float angle = Vector3.Angle (transform.forward, obj.transform.position - transform.position);
 		if (Mathf.Abs (angle) > 45) {
 		} else {
@@ -49,11 +83,7 @@ public class Track : MonoBehaviour {
 
 		//Debug.Log (lifeTime);
 		if (lifeTime <= 0) {
-			if (!explosion.isPlaying) {
-				explosion.Play ();
-			}
-			Destroy ((GameObject)transform.root.gameObject, 1f);
-			reportRocketDestroyed ();
+			destroyself ();
 		} else {
 			transform.position += transform.forward * speed * Time.deltaTime;
 		}
@@ -64,12 +94,16 @@ public class Track : MonoBehaviour {
 
 
 	void OnCollisionEnter(Collision col){
+		Debug.Log ("COLLISION: " + col.transform.tag);
 		//audio.Play ();
 		if (col.transform.tag == "Player") {
 			col.transform.GetComponent<RunRestroyScript> ().startExplosion ();
 			Destroy ((GameObject)transform.root.gameObject, 0f);
 			reportRocketDestroyed ();
+		} else if (col.transform.tag == "Flares") {
+			destroyself ();
 		}
+
 	}
 
 	private void reportRocketDestroyed(){
@@ -77,5 +111,14 @@ public class Track : MonoBehaviour {
 			ScoreControllerScript.onRockedDestroyed ();
 			isReported = true;
 		}
+	}
+
+	void destroyself ()
+	{
+		if (!explosion.isPlaying) {
+			explosion.Play ();
+		}
+		Destroy ((GameObject)transform.root.gameObject, 1f);
+		reportRocketDestroyed ();
 	}
 }

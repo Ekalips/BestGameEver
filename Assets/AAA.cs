@@ -27,7 +27,7 @@ public class AAA : MonoBehaviour {
 	void Update () {
 
 		float distance = Vector3.Distance (transform.position, lineAt.position) ;
-		if (distance <= detectDistanse && delay==0) {
+		if (distance <= detectDistanse && delay==0 && !player.GetComponent<AeroplaneController>().IsImmobilized()) {
 			DrawLine (transform.position, lineAt.position, Color.red);
 		}
 

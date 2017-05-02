@@ -58,12 +58,18 @@
      <Compile Include="Assets\EffectExamples\Shared\Scripts\GunShoot.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+     <Compile Include="Assets\FlareController.cs" />
+     <Compile Include="Assets\FlareLauncher.cs" />
      <Compile Include="Assets\GeasControl.cs" />
      <Compile Include="Assets\Lel.cs" />
      <Compile Include="Assets\MenusController.cs" />
      <Compile Include="Assets\MoveCameraScript.cs" />
      <Compile Include="Assets\MoveRelativeToPlane.cs" />
+     <Compile Include="Assets\Object Placement Toolkit\Scripts\PropPoolManager.cs" />
+     <Compile Include="Assets\Object Placement Toolkit\Scripts\TrackObstacle.cs" />
+     <Compile Include="Assets\Object Placement Toolkit\Scripts\UI.cs" />
      <Compile Include="Assets\OnButtonClick.cs" />
+     <Compile Include="Assets\PlaneGUIUpdater.cs" />
      <Compile Include="Assets\PrefsController.cs" />
      <Compile Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\Antialiasing.cs" />
      <Compile Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\Bloom.cs" />
@@ -105,6 +111,7 @@
      <Compile Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\Vortex.cs" />
      <Compile Include="Assets\RunRestroyScript.cs" />
      <Compile Include="Assets\ScoreControllerScript.cs" />
+     <Compile Include="Assets\SetupGenerationScript.cs" />
      <Compile Include="Assets\Track.cs" />
      <None Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
@@ -131,6 +138,7 @@
      <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
      <None Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+     <None Include="Assets\Object Placement Toolkit\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Realistic Terrain Collection\Other\Effects\ImageEffects\Shaders\frag_ao.cginc" />
      <None Include="Assets\Standard Assets\Vehicles\Aircraft\AircraftGuidelines.txt" />
      <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpecTransp.shader" />
