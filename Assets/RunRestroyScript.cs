@@ -44,6 +44,7 @@ public class RunRestroyScript : MonoBehaviour {
 	public void startExplosion(){
 		isRun =true;
 		GetComponent<UnityStandardAssets.Vehicles.Aeroplane.AeroplaneController> ().Immobilize ();
+		Destroy (GetComponent<PlaneGUIUpdater> ());
 	}
 
 	void OnCollisionEnter(Collision col){
@@ -53,6 +54,16 @@ public class RunRestroyScript : MonoBehaviour {
 			isRun = true;
 			lifetime = 4f;
 			GetComponent<UnityStandardAssets.Vehicles.Aeroplane.AeroplaneController> ().Immobilize ();
+			Destroy (GetComponent<PlaneGUIUpdater> ());
 		}
+	}
+
+	public void Reset(){
+		GetComponent<UnityStandardAssets.Vehicles.Aeroplane.AeroplaneController> ().Reset ();
+		isRun = false;
+		lifetime = 4f;
+		permamentSystem1.Stop ();
+		explosionSoundSrc.Stop ();
+		oneTimesystem.Stop ();
 	}
 }

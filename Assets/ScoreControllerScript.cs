@@ -6,15 +6,16 @@ public class ScoreControllerScript : MonoBehaviour {
 
 	static int currentRockets;
 	float scoreMultiplier;
-	static float score;
+	public static float score;
 	// Use this for initialization
 	void Start () {
 		scoreMultiplier = PlayerPrefs.GetFloat (PrefsController.KEY_HARDINA, 1);
+		score = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		score += Time.deltaTime * 10 * scoreMultiplier;
+		score += Time.deltaTime * 10 * scoreMultiplier * currentRockets;
 	}
 
 	public static void onRocketCreated(){

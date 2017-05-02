@@ -60,6 +60,7 @@
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
      <Compile Include="Assets\FlareController.cs" />
      <Compile Include="Assets\FlareLauncher.cs" />
+     <Compile Include="Assets\GameOverButtonsController.cs" />
      <Compile Include="Assets\GeasControl.cs" />
      <Compile Include="Assets\Lel.cs" />
      <Compile Include="Assets\MenusController.cs" />
